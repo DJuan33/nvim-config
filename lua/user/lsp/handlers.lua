@@ -59,7 +59,13 @@ local function lsp_highlight_document(client)
 end
 
 M.on_attach = function(client)
-	if client.name == "tsserver" then
+	if client.name == "sumneko_lua" then
+		client.resolved_capabilities.document_formatting = false
+	end
+	if client.name == "gopls" then
+		client.resolved_capabilities.document_formatting = false
+	end
+	if client.name == "pyright" then
 		client.resolved_capabilities.document_formatting = false
 	end
 	lsp_highlight_document(client)
